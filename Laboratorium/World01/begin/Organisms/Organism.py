@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-
+from Position import Position
+from Action import  Action
+from ActionEnum import ActionEnum
 
 class Organism(ABC):
 
@@ -104,9 +106,9 @@ class Organism(ABC):
 		result = []
 
 		if self.power > atackingOrganism.power:
-			result.append() # atacking lose
+			result.append(Action(ActionEnum.A_REMOVE, Position(xPosition=-1, yPosition=-1), 0, atackingOrganism))
 		else:
-			result.append() # atacking win
+			result.append(Action(ActionEnum.A_REMOVE, Position(xPosition=-1, yPosition=-1), 0, self))
 		return result
 
 	def ifReproduce(self):
@@ -117,5 +119,5 @@ class Organism(ABC):
 		return result
 
 	def __str__(self):
-		return "{0}: power: {1} initiative: {2} liveLength {3} position: {4}"\
+		return '{0}: power: {1} initiative: {2} liveLength {3} position: {4}'\
 				.format(self.__class__.__name__, self.power, self.initiative, self.liveLength, self.position)

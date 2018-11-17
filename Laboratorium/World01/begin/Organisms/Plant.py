@@ -1,5 +1,7 @@
 from .Organism import Organism
-
+from Action import Action
+from ActionEnum import ActionEnum
+import random
 
 class Plant(Organism):
 
@@ -12,13 +14,17 @@ class Plant(Organism):
 		newPosition = None
 
 		if self.ifReproduce():
-			newPosition = self.getFreeNeighboringPosition(self.position)
+			pomPositions = self.getFreeNeighboringPosition(self.position)
+
+			if pomPositions:
+				newPosition = random.choice(pomPositions)
+
 			if newPosition is not None:
 				newPlant = self.clone()
-				newPlant.initParam()
+				newPlant.initParams()
 				newPlant.position = newPosition
-				self.power = self.power/2				# spr if int
-				result.append(newPlant)
+				self.power = self.power/2
+				result.append(Action(ActionEnum.A_ADD, newPosition, 0, newPlant))
 		return result
 
 	def getFreeNeighboringPosition(self, position):

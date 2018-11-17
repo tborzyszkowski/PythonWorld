@@ -35,4 +35,4 @@ class Position(object):
 		return (self.x == other.x) and (self.y == other.y)
 
 	def __str__(self):
-		return "({0}, {1})".format(self.x, self.y)
+		return '({0}, {1})'.format(self.x, self.y)

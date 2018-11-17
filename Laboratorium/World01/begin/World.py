@@ -1,5 +1,7 @@
 from Position import Position
 from Organisms.Plant import Plant
+from Action import Action
+from ActionEnum import ActionEnum
 
 
 class World(object):
@@ -24,20 +26,66 @@ class World(object):
 	def turn(self):
 		return self.__turn
 
+	@turn.setter
+	def turn(self, value):
+		self.__turn = value
+
 	@property
 	def organisms(self):
 		return self.__organisms
 
+	@organisms.setter
+	def organisms(self, value):
+		self.__organisms = value
+
 	@property
 	def newOrganisms(self):
 		return self.__newOrganisms
+
+	@newOrganisms.setter
+	def newOrganisms(self, value):
+		self.__newOrganisms = value
 
 	@property
 	def separator(self):
 		return self.__separator
 
 	def makeTurn(self):
-		pass
+		actions = []
+
+		for org in self.organisms:
+			if self.positionOnBoard(org.position):
+				actions = org.move()
+				for a in actions:
+					self.makeMove(a)
+				actions = []
+
+		self.organisms = [o for o in self.organisms if self.positionOnBoard(o.position)]
+		for o in self.organisms:
+			o.liveLength -= 1
+			o.power += 1
+			if o.liveLength < 1:
+				print(str(o.__class__.__name__) + ': died of old age at: ' + str(o.position))
+		self.organisms = [o for o in self.organisms if o.liveLength > 0]
+		# add info died of old age
+
+		self.newOrganisms = [o for o in self.newOrganisms if self.positionOnBoard(o.position)]
+		self.organisms.extend(self.newOrganisms)
+		self.organisms.sort(key=lambda o: o.initiative, reverse=True)
+		self.newOrganisms = []
+
+		self.turn += 1
+
+	def makeMove(self, action):
+		print(action)
+		if action.action == ActionEnum.A_ADD:
+			self.newOrganisms.append(action.organism)
+		elif action.action == ActionEnum.A_INCREASEPOWER:
+			action.organism.power += action.value
+		elif action.action == ActionEnum.A_MOVE:
+			action.orgranism.position = action.position
+		elif action.action == ActionEnum.A_REMOVE:
+			action.organism.position = Position(xPosition=-1, yPosition=-1)
 
 	def addOrganism(self, newOrganism):
 		newOrgPosition = Position(xPosition=newOrganism.position.x, yPosition=newOrganism.position.y)
@@ -47,7 +95,6 @@ class World(object):
 			self.organisms.sort(key=lambda org: org.initiative, reverse=True)
 			return True
 		return False
-
 
 	def positionOnBoard(self, position):
 		return position.x >= 0 and position.y >= 0 and position.x < self.worldX and position.y < self.worldY
@@ -96,7 +143,7 @@ class World(object):
 		return result
 
 	def __str__(self):
-		result = ""
+		result = '\nturn: ' + str(self.__turn) + '\n'
 		for wY in range(0, self.worldY):
 			for wX in range(0, self.worldX):
 				org = self.getOrganismFromPosition(Position(xPosition=wX, yPosition=wY))
