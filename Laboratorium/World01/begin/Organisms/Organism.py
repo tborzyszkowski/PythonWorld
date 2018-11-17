@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from ..Position import Position
 
 
 class Organism(ABC):
@@ -26,6 +25,8 @@ class Organism(ABC):
 				self.__position = position
 			if world is not None:
 				self.__world = world
+			self.initParams()
+
 
 	@property
 	def power(self):
@@ -72,7 +73,7 @@ class Organism(ABC):
 		return self.__sign
 
 	@sign.setter
-	def sing(self, value):
+	def sign(self, value):
 		self.__sign = value
 
 	@property

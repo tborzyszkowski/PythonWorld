@@ -1,5 +1,5 @@
-from .Position import Position
-from .Organisms.Plant import Plant
+from Position import Position
+from Organisms.Plant import Plant
 
 
 class World(object):
@@ -13,7 +13,7 @@ class World(object):
 		self.__separator = ' '
 
 	@property
-	def wordlX(self):
+	def worldX(self):
 		return self.__worldX
 
 	@property
@@ -39,11 +39,18 @@ class World(object):
 	def makeTurn(self):
 		pass
 
-	def addOrganism(self):
-		pass
+	def addOrganism(self, newOrganism):
+		newOrgPosition = Position(xPosition=newOrganism.position.x, yPosition=newOrganism.position.y)
+
+		if self.positionOnBoard(newOrgPosition):
+			self.organisms.append(newOrganism)
+			self.organisms.sort(key=lambda org: org.initiative, reverse=True)
+			return True
+		return False
+
 
 	def positionOnBoard(self, position):
-		return position.x >= 0 and position.y >= 0 and position.x < self.wordlX and position.y < self.worldY
+		return position.x >= 0 and position.y >= 0 and position.x < self.worldX and position.y < self.worldY
 
 	def getOrganismFromPosition(self, position):
 		pomOrganism = None
@@ -90,7 +97,7 @@ class World(object):
 
 	def __str__(self):
 		result = ""
-		for wY in range(0, self.wordlY):
+		for wY in range(0, self.worldY):
 			for wX in range(0, self.worldX):
 				org = self.getOrganismFromPosition(Position(xPosition=wX, yPosition=wY))
 				if org:
