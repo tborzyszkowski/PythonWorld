@@ -1,1 +1,3 @@
 # Opis zadania...
+
+owca gotowa
