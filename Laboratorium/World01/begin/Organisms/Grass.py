@@ -3,8 +3,8 @@ from .Plant import Plant
 
 class Grass(Plant):
 
-	def __init__(self, plant=None, position=None, world=None):
-		super(Grass, self).__init__(plant, position, world)
+	def __init__(self, grass=None, position=None, world=None):
+		super(Grass, self).__init__(grass, position, world)
 
 	def clone(self):
 		return Grass(self, None, None)

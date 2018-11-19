@@ -92,15 +92,15 @@ class Organism(ABC):
 		pass
 
 	@abstractmethod
+	def action(self):
+		pass
+
+	@abstractmethod
 	def initParams(self):
 		pass
 
 	@abstractmethod
 	def clone(self):
-		pass
-
-	@abstractmethod
-	def collision(self, colisionOrganism):
 		pass
 
 	def consequences(self, atackingOrganism):

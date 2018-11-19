@@ -11,6 +11,10 @@ class Plant(Organism):
 
 	def move(self):
 		result = []
+		return result
+
+	def action(self):
+		result = []
 		newPlant = None
 		newPosition = None
 
@@ -19,18 +23,12 @@ class Plant(Organism):
 
 			if pomPositions:
 				newPosition = random.choice(pomPositions)
-
-			if newPosition is not None:
 				newPlant = self.clone()
 				newPlant.initParams()
 				newPlant.position = newPosition
-				self.power = self.power/2
+				self.power = self.power / 2
 				result.append(Action(ActionEnum.A_ADD, newPosition, 0, newPlant))
 		return result
 
 	def getFreeNeighboringPosition(self, position):
 		return self.world.filterFreePositions(self.world.getNeighboringPositions(position))
-
-	def collision(self, colisionOrganism):
-		return []
-

@@ -59,6 +59,10 @@ class World(object):
 				for a in actions:
 					self.makeMove(a)
 				actions = []
+				actions = org.action()
+				for a in actions:
+					self.makeMove(a)
+				actions = []
 
 		self.organisms = [o for o in self.organisms if self.positionOnBoard(o.position)]
 		for o in self.organisms:
@@ -82,7 +86,7 @@ class World(object):
 		elif action.action == ActionEnum.A_INCREASEPOWER:
 			action.organism.power += action.value
 		elif action.action == ActionEnum.A_MOVE:
-			action.orgranism.position = action.position
+			action.organism.position = action.position
 		elif action.action == ActionEnum.A_REMOVE:
 			action.organism.position = Position(xPosition=-1, yPosition=-1)
 
@@ -136,7 +140,7 @@ class World(object):
 		pomOrg = None
 
 		for filed in fields:
-			pomOrg = self.getOrganismFromPosition(fields)
+			pomOrg = self.getOrganismFromPosition(filed)
 			if pomOrg is None or isinstance(pomOrg, Plant):
 				result.append(filed)
 		return result
