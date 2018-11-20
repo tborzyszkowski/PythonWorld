@@ -59,10 +59,11 @@ class World(object):
 				for a in actions:
 					self.makeMove(a)
 				actions = []
-				actions = org.action()
-				for a in actions:
-					self.makeMove(a)
-				actions = []
+				if self.positionOnBoard(org.position):
+					actions = org.action()
+					for a in actions:
+						self.makeMove(a)
+					actions = []
 
 		self.organisms = [o for o in self.organisms if self.positionOnBoard(o.position)]
 		for o in self.organisms:

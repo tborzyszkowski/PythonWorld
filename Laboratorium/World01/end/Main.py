@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
 	print(pyWorld)
 
-	for _ in range(0, 20):
+	for _ in range(0, 30):
 		input('')
 		os.system('cls')
 		pyWorld.makeTurn()

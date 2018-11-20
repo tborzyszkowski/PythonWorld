@@ -35,14 +35,19 @@ class Animal(Organism):
 	def action(self):
 		result = []
 		newAnimal = None
+		birthPositions = self.getNeighboringBirthPosition()
 
-		if self.ifReproduce():
+		if self.ifReproduce() and birthPositions:
+			newAnimalPosition = random.choice(birthPositions)
 			newAnimal = self.clone()
 			newAnimal.initParams()
-			newAnimal.position = self.lastPosition
+			newAnimal.position = newAnimalPosition
 			self.power = self.power / 2
-			result.append(Action(ActionEnum.A_ADD, self.lastPosition, 0, newAnimal))
+			result.append(Action(ActionEnum.A_ADD, newAnimalPosition, 0, newAnimal))
 		return result
 
 	def getNeighboringPosition(self):
 		return self.world.getNeighboringPositions(self.position)
+
+	def getNeighboringBirthPosition(self):
+		return self.world.filterFreePositions(self.world.getNeighboringPositions(self.position))
