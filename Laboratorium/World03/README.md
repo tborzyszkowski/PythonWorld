@@ -1,6 +1,6 @@
 # Opis świata
 
-W katalogu ```begin``` znajduje się definicja świata, który jest wynikiem rozwiązania zadania 2.
+W katalogu `begin` znajduje się definicja świata, który jest wynikiem rozwiązania zadania 2.
 
 # Zadanie
 
@@ -8,11 +8,11 @@ W katalogu ```begin``` znajduje się definicja świata, który jest wynikiem roz
 
 * bazując na definicji zwierzęcia dodać wilka
 * wilk posiada następujące atrubuty:
-    * ```power = 8```
-	* ```initiative = 5```
-	* ```liveLength = 20```
-	* ```powerToReproduce = 16```
-	* ```sign = 'W'```
+    * `power = 8`
+	* `initiative = 5`
+	* `liveLength = 20`
+	* `powerToReproduce = 16`
+	* `sign = 'W'`
 
 ## Obserwacje
 
