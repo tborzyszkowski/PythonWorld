@@ -30,4 +30,6 @@ zwierzęcia, które prócz własności organizmu potrafi się przemieszczać i p
 	* ```powerToReproduce = 6```
 	* ```sign = 'S'```
 
-Do świata dodać owcę i obserwować jak się rozwija świat w poszczególnych turach.
+## Obserwacje
+
+* do świata dodać owcę i obserwować jak się rozwija świat w poszczególnych turach.
