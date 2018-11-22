@@ -12,3 +12,23 @@ W katalogu ```begin``` znajduje się definicja świata w którym rządzą nastę
     * ```world```: świat, w którym żyje organizm
 * jedynym organizmem żyjącym na świecie jest trawa
 
+# Zadanie
+
+## Zwierze
+
+* bazując na definicji organizmu napisać definicję
+zwierzęcia, które prócz własności organizmu potrafi się przemieszczać i pamięta swoją ostanią pozycję
+* w wyniku przemieszczania organizm może spotkać inny organizm; w wyniku takiego spotkania zachodzą konsekwencje opisane w organiźmie
+
+## Owca
+* bazując na definicji zwierzęcia zdefiniować owcę
+* owca przemieszcza się i je trawę
+* owca posiada następujące atrubuty:
+    * ```power = 3```
+    * ```power = 3```
+	* ```initiative = 3```
+	* ```liveLength = 10```
+	* ```powerToReproduce = 6```
+	* ```sign = 'S'```
+
+Do świata dodać owcę o obserwować jak się rozwija w poszczególnych turach.
