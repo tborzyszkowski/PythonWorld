@@ -1,5 +1,4 @@
 from Organism import Organism
-import random
 
 class Plant(Organism):
 

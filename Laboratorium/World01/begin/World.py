@@ -12,7 +12,7 @@ class World(object):
 		self.__turn = 0
 		self.__organisms = []
 		self.__newOrganisms = []
-		self.__separator = ' '
+		self.__separator = '.'
 
 	@property
 	def worldX(self):

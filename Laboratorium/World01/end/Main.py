@@ -6,20 +6,20 @@ import os
 
 
 if __name__ == '__main__':
-	pyWorld = World(5, 5)
+	pyWorld = World(10, 10)
 
-	newOrg = Grass(position=Position(xPosition=2, yPosition=2), world=pyWorld)
+	newOrg = Grass(position=Position(xPosition=9, yPosition=9), world=pyWorld)
 	pyWorld.addOrganism(newOrg)
 
-	newOrg = Grass(position=Position(xPosition=2, yPosition=4), world=pyWorld)
+	newOrg = Grass(position=Position(xPosition=1, yPosition=1), world=pyWorld)
 	pyWorld.addOrganism(newOrg)
 
-	newOrg = Sheep(position=Position(xPosition=2, yPosition=3), world=pyWorld)
+	newOrg = Sheep(position=Position(xPosition=2, yPosition=2), world=pyWorld)
 	pyWorld.addOrganism(newOrg)
 
 	print(pyWorld)
 
-	for _ in range(0, 30):
+	for _ in range(0, 50):
 		input('')
 		os.system('cls')
 		pyWorld.makeTurn()
